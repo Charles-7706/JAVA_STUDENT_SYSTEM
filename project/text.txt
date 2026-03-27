@@ -1,0 +1,6 @@
+classes
+person, student lec 
+course
+
+line to run the database
+java -cp "bin;mysql-connector-java.jar" GroupProject.database
