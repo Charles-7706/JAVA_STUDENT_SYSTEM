@@ -1,15 +1,28 @@
-package GroupProject.model;
+package project.model;
 
 public class Lecturer extends Person {
+
+    private int staffID;
     private Course[] courses;
 
-    public Lecturer(String name, Course[] courses) {
-        super(name); // Call the superclass constructor
-        this.courses = courses;
+    public Lecturer(String name, int staffID) {
+        super(name);
+        this.staffID = staffID;
+        this.courses = new Course[10]; // example size
     }
+
+    public int getStaffID() {
+        return staffID;
+    }
+
+    public void setStaffID(int staffID) {
+        this.staffID = staffID;
+    }
+
     public Course[] getCourses() {
         return courses;
     }
+
     public void setCourses(Course[] courses) {
         this.courses = courses;
     }

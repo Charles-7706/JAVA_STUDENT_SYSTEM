@@ -1,16 +1,23 @@
-package GroupProject.model;
+package project.model;
 
 public class Student extends Person {
+
     private int studentID;
     private String programme;
-    private Course[] courses;
+    private final Course[] courses;
 
     public Student(String name, int studentID, String programme) {
-        super(name); // Call the superclass constructor
+        super(name);
         this.studentID = studentID;
         this.programme = programme;
-        this.courses = new Course[5]; // Initialize the courses array with a fixed size
+        this.courses = new Course[5];
+    }
 
+    public Student(String name, String programme) {
+        super(name);
+        this.studentID = 0;
+        this.programme = programme;
+        this.courses = new Course[5];
     }
 
     public int getStudentID() {
@@ -29,30 +36,18 @@ public class Student extends Person {
         this.programme = programme;
     }
 
-    // student methods
-    public void enrollCourse(Course course) {
-        for (int i = 0; i < courses.length; i++) {
-            if (courses[i] == null) {
-                courses[i] = course;
-                break;
-            }
-        }
-    }
-    // get all courses
     public Course[] getCourses() {
         return courses;
     }
-    // generate transcript
-    public String generateTranscript() {
-        StringBuilder transcript = new StringBuilder();
-        transcript.append("Transcript for ").append(getName()).append(" (").append(studentID).append(")\n");
-        transcript.append("Programme: ").append(programme).append("\n");
-        transcript.append("Courses:\n");
-        for (Course course : courses) {
-            if (course != null) {
-                transcript.append(course.getCourseName()).append(" (").append(course.getCourseCode()).append("): CAT=").append(course.getScore().getCat()).append(", Exam=").append(course.getScore().getExam()).append(", Total=").append(course.getScore().getTotalScore()).append("\n");
+
+    public void addCourse(Course course) {
+        for (int i = 0; i < courses.length; i++) {
+            if (courses[i] == null) {
+                courses[i] = course;
+                return;
             }
         }
-        return transcript.toString();
+        System.out.println("Maximum 5 courses reached");
     }
 }
+

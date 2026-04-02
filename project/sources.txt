@@ -1,0 +1,15 @@
+./DAO/CourseDAO.java
+./DAO/DBConnection.java
+./DAO/LecturerCourseDAO.java
+./DAO/LecturerDAO.java
+./DAO/PersonDAO.java
+./DAO/ScoreDAO.java
+./DAO/StudentCourseDAO.java
+./DAO/StudentDAO.java
+./model/Course.java
+./model/Lecturer.java
+./model/LecturerTest.java
+./model/Person.java
+./model/Score.java
+./model/Student.java
+./view/StudentPortal.java

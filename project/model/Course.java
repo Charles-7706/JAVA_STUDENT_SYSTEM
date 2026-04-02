@@ -1,4 +1,4 @@
-package GroupProject.model;
+package project.model;
 
 public class Course {
     private String courseName;

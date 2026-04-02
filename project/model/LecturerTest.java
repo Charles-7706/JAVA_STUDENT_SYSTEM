@@ -1,4 +1,4 @@
-package GroupProject.model;
+package project.model;
 
 public class LecturerTest {
     public static void main(String[] args) {
@@ -6,19 +6,18 @@ public class LecturerTest {
         Student student = new Student("John Doe", 12345, "Computer Science");
 
         // Create courses
-        Course course1 = new Course("Data Structures", "CS101", new Score(25, 60));
-        Course course2 = new Course("Algorithms", "CS102", new Score(28, 65));
+        Course course1 = new Course("Data Structures", "CS101", new Score(12345, "CS101", 25, 60));
+        Course course2 = new Course("Algorithms", "CS102", new Score(12345, "CS102", 28, 65));
 
         // Enroll student in courses
-        student.enrollCourse(course1);
-        student.enrollCourse(course2);
+        student.addCourse(course1);
+        student.addCourse(course2);
 
         // Create lecturer with courses
-        Course[] lecturerCourses = {course1, course2};
-        Lecturer lecturer = new Lecturer("Dr. Smith", lecturerCourses);
+        Lecturer lecturer = new Lecturer("Dr. Smith", 1);
 
         // Test assignGrade: assign a new score to course1
-        Score newScore = new Score(30, 70);
+        Score newScore = new Score(12345, "CS101", 30, 70);
         lecturer.assignGrade(student, course1, newScore);
 
         // Verify the score was assigned
@@ -38,11 +37,13 @@ public class LecturerTest {
         }
 
         // Test assignGrade for a course the student is not enrolled in
-        Course course3 = new Course("Databases", "CS103", new Score(20, 50));
-        lecturer.assignGrade(student, course3, new Score(25, 55)); // Should print not enrolled message
+        Course course3 = new Course("Databases", "CS103", new Score(12345, "CS103", 20, 50));
+        lecturer.assignGrade(student, course3, new Score(12345, "CS103", 25, 55));
 
         // Generate and print transcript to verify
         System.out.println("\nStudent Transcript:");
-        System.out.println(student.generateTranscript());
+        for (Course c : student.getCourses()) {
+            if (c != null) System.out.println(c.getCourseName() + ": " + c.getScore().getTotalScore());
+        }
     }
 }
